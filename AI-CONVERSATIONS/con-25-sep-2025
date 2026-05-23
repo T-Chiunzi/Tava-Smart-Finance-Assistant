@@ -133,3 +133,103 @@ Keep these weightings in mind to prioritize your time over the next couple of da
 
 
 Which of the suggested project themes (like *Budget Buddy* or *Savings Coach*) stands out to you the most, and have you already started setting up your Developer's Diary?
+
+________________________________________________________________________________________________________-
+
+Me: Thank you Gemini, I’ve chosen to create a savings buddy app for this assignment. Here is what I want the buddy to be capable of. 
+I want to design a savings buddy app that tracks and monitors expenses and sorts them into different categories such as groceries, rent, utilities, eating out, subscriptions, leisure and entertainment, once the user inputs them in. 
+The app should prompt the user to input what they want to save up for and how much. The app should also prompt the user on their salary and their expenses and how much they spend on them. After analysing and sorting the expenses, the app should display to the user how much of their income is being spent on each expense and how much money from their salary is left.  
+The app should be encouraging and calculate savings goals. 
+(if the user is saving for  something like a television,) The app should make a timeline for how long it would take to save up monthly for what they want (I guess the app should ask when they want to buy the item and how much it costs).  
+If they want to save for an emergency fund, the app can give them a general savings plan by dedicating a percentage of their salary to the emergency fund. 
+The app should also ask if the user wants to increase the amount they want to save by (10%, 15%, 20%, etc).  
+The user should also be able to talk to an ai chatbot for advice for their savings needs. 
+Visually, I want the app to have a dashboard, something to organise the app so that the user can choose between going straight to the chatbot or straight into tracking and monitoring their savings. I want the user to be able to customise the appearance (the app colour and font). 
+ 
+Are these things possible to do on notebook and where do you suggest I start. (The deadline has been extended to 27 May) 
+
+Gemini: The short answer is **yes, absolutely!** Everything you have described is highly achievable within a single Google Colab notebook. In fact, you have designed an exceptional app concept that perfectly balances technical logic with business relevance, which will look fantastic to your professors.
+
+By utilizing the extended deadline (**Wednesday, May 27, 2026**), we can take our time to implement this elegantly.
+
+Let's break down exactly how your ideas map onto the technical requirements of the assignment, followed by where you should start.
+
+---
+
+### Part 1: How Your Ideas Map to the Code
+
+Gradio uses an approach called **Blocks**, which lets you layout components neatly like a web dashboard using `with gr.Tabs():`. This is how your feature map will look behind the scenes:
+
+#### 1. The Dashboard, Custom Appearance, and Fonts
+
+* **The Blueprint:** Gradio features a built-in theming engine. You can change the primary colors, backgrounds, and fonts with a single line of code using preset styles like `theme=gr.themes.Soft()` or `theme=gr.themes.Citrus()`.
+* **The Layout:** You can use `gr.Tab("Chatbot Advice")` and `gr.Tab("Savings Tracker")` to build a clean dashboard layout. This gives the user separate spaces so they can navigate straight to whichever tool they need.
+
+#### 2. The Chatbot (`hands-on-ai` Chat)
+
+* **The Blueprint:** You will use the `hands_on_ai.chat` module. By assigning it a "System Prompt," you can dictate its behavior completely.
+* **Your Twist:** You can tell it: *"You are an encouraging, friendly, and highly optimistic savings buddy. Give actionable advice on reducing expenses."*
+
+#### 3. Expense Breakdown and Savings Calculations (Your Agent Tool)
+
+This is where your core Python programming takes over. Your **Agent Tool** will be a custom Python function (e.g., `def calculate_savings_plan(...)`) that handles the math behind your features:
+
+* **Inputs:** Income, savings goal amount, a list or dictionary of expenses, and the optional "boost percentage" (10%, 15%, 20%).
+* **Logic processing:**
+* It subtracts total expenses from income to find the remaining balance.
+* It calculates what percentage of total income goes into each bucket (Rent, Groceries, etc.).
+* If saving for a specific item (like a TV), it computes: $\text{Months Needed} = \frac{\text{Goal Cost}}{\text{Monthly Contribution}}$.
+* If saving for an emergency fund, it automatically applies a dedicated threshold (e.g., reserving 20% of the salary) and shows how fast the cushion grows.
+* If the user selects a "Savings Boost," it automatically raises their monthly goal target by that chosen 10%–20% margin to speed up the timeline.
+
+
+
+---
+
+### Part 2: Step-by-Step Blueprint on Where to Start
+
+Don't try to build the whole app at once. Because your course evaluates you on a **Six-Step Development Methodology**, use that structure to guide your workflow day-by-day.
+
+#### Step 1: Set up your GitHub and Developer's Diary (Do this Today)
+
+1. Clone the starter repository provided by your lecturer (`michael-borck/smart-finance-assistant`) into your own GitHub account.
+2. Open your `diary.md` file. Document your brainstorming session for this "Savings Buddy" concept.
+3. Take a screenshot of our conversation right now, or your brainstorming notes, and include it as your **Week 8/9 Artifact** with a brief reflection on how you settled on your app design.
+
+#### Step 2: Write out Step 1, 2, and 4 of the Methodology in Colab
+
+Before writing functional Python, open your Colab notebook, create text (Markdown) cells, and explicitly outline:
+
+* **Step 1 (Understand the Problem):** Explain in business terms why young professionals or students need an encouraging tracking tool to curb impulse buying and hit targets.
+* **Step 2 (Inputs/Outputs):** Write down a clean markdown list. (Inputs: Salary, Item Cost, Target Date, Categorized Costs. Outputs: Budget breakdown percentages, remaining balance, savings horizon months).
+* **Step 4 (Pseudocode):** Write out your math logic in plain text sentences. For example:
+```text
+Prompt user for monthly salary
+Sum up all expenses across Groceries, Rent, Utilities, etc.
+Remaining balance = Salary - Total Expenses
+Divide individual category spending by Salary to calculate usage percentages
+If an aggressive savings boost is selected, scale up the contribution rate
+
+```
+
+
+
+#### Step 3: Write and Test the Core Math Function (The Python Tool)
+
+Create a Python code cell in Colab to build your logic function. Test it by running sample inputs directly inside the notebook to ensure the arithmetic functions exactly as expected.
+
+* *Tip:* Show your manual calculation examples in **Step 3 (Work by Hand)** right above this code block to verify that your code outputs match your manual math perfectly.
+
+#### Step 4: Wire up the Chatbot and UI using Gradio
+
+Once your math function works seamlessly in isolation, import `hands_on_ai` and `gradio`. Build the visual elements: setup the text fields for income and goals, place the dropdown component for the percentage increases, configure the layout tabs, and attach your calculations to a click button.
+
+#### Step 5: Assertive Testing (Step 6)
+
+At the bottom of your notebook, write explicit test cases using `assert` statements. Test what happens if someone inputs zero expenses, or what happens if their spending exceeds their income, to prove your application can handle edge cases smoothly.
+
+---
+
+### What to do next:
+
+Would you like to start by drafting the **Pseudocode (Step 4)** for your calculation logic together, or would you prefer help writing the **System Prompt** to give your chatbot its unique, encouraging financial coach personality?
