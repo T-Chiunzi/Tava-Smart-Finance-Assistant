@@ -1,346 +1,135 @@
+Me: Hello Gemini, I am a 1st-year, 2nd-semester B.Com Business Information Systems undergraduate student. I need help with my Introduction to Business Programming assignment, as it involves AI collaboration (the coding language we are using is Python, and I am an amateur in this language). Please break down what I need to do for this assignment in a simple, easy-to-understand way.
 
-Skip to main content
+Gemini: Welcome to the world of business programming! It is completely normal to feel a bit like an amateur when diving into Python, especially when you are balancing the technical side with the strategic side of Business Information Systems.
 
+This assignment is less about becoming a hardcore software engineer and more about learning how to use modern tools—like AI and pre-built code packages—to solve a real-world financial problem.
 
-Yes, please create the function to validate user i
-GPT-5 On
+Since the deadline is this **Friday, May 22, 2026**, let’s cut through the jargon and break this project down into clear, manageable pieces.
 
+---
 
-You are using Copilot Chat with GPT-5 with standard access. Quality and performance may vary depending on service availability.Learn more.
-Today
-You said:
+## 1. The Big Picture: What Are You Building?
 
-Yes, please create the function to validate user input in pythn for a integer
-Copilot said:
-Copilot
-Here’s a simple Python function to validate that user input is an integer:
+You are creating a **Smart Finance Assistant** web app. Instead of writing thousands of lines of code from scratch, you will use a single **Google Colab Notebook** and a special package called `hands-on-ai` to stitch four key elements together:
 
+* 
+**Chat:** A conversational chatbot with a specific finance personality (e.g., an encouraging savings coach or a strict budget analyst).
 
 
+* **RAG (Retrieval-Augmented Generation):** A fancy term for "letting your chatbot read a file." Your app needs to look at a data source, like a CSV file of transactions, and answer questions about it.
 
-Python
-def get_valid_integer(prompt="Enter an integer: "):
-    while True:
-        user_input = input(prompt)
-        try:
-            value = int(user_input)
-            return value
-        except ValueError:
-            print("Invalid input. Please enter a valid integer.")
-✅ How it works:
-Loop until valid input: The while True loop keeps asking until the user enters a valid integer.
-Try converting to int: If int(user_input) works, the function returns the integer.
-Handle errors: If conversion fails, it prints an error message and asks again.
-Would you like me to:
 
-✅ Add range validation (e.g., only accept integers between 1 and 100)?
-✅ Add custom error messages or retry limits?
-✅ Make it work for command-line arguments or GUI input?
+* 
+**Agent Tool:** A custom Python function you write to do a specific calculation, such as a currency converter or a savings goal tracker.
 
 
+* 
+**Gradio UI:** A simple, user-friendly visual interface (buttons, text boxes) so someone can actually interact with your bot without looking at raw code.
 
 
 
+### Suggested Themes to Choose From:
 
+You only need to pick **one** theme. For a Business Information Systems mindset, these two are excellent choices:
 
-You said:
+* 
+**Budget Buddy:** Users upload their expense CSV, and the chatbot gives them practical spending advice.
 
-Hey I have an annoying lecvturer, they want the code to be commented, and he mention a wierd thing call doctring or something.  Can you fix this function
-Copilot said:
-Copilot
 
-Reasoned for 6s
+* 
+**Savings Coach:** A helpful bot that cheers the user on and calculates how long it will take to hit their financial goals.
 
-Planning a function update
 
-Designing function and docstring
 
-Refining function and docstring
-Totally get it—happy to help you make it “lecturer-proof.”
-I’ve added clear inline comments and a proper docstring (the “weird thing” your lecturer mentioned). A docstring is just a triple-quoted string placed at the top of a function/class/module that explains what it does. Tools like help() and IDEs use it to show documentation.
+---
 
-Here’s a polished, well-documented version with optional range checks and retry limits:
+## 2. The Six-Step Coding Process
 
+Your professors don't just want to see a working app; they want to see *how* you designed it. In your Colab notebook, you need to use Markdown cells to document these six steps before and after your code:
 
+1. 
+**Understand the Problem:** Write a short paragraph in plain English explaining what your finance assistant is trying to solve.
 
 
-Python
-from typing import Optional
+2. 
+**Inputs and Outputs:** Explicitly list what goes into the system (e.g., a CSV file, user text) and what comes out (e.g., budget summaries, advice).
 
-def get_valid_integer(
-    prompt: str = "Enter an integer: ",
-    *,
-    min_value: Optional[int] = None,
-    max_value: Optional[int] = None,
-    retries: Optional[int] = None
-) -> int:
-    """
-    Prompt the user until they enter a valid integer and return it.
 
-    This function repeatedly prompts via `input()` and returns the parsed
-    integer once valid. You can optionally enforce a numeric range and a
-    maximum number of invalid attempts.
+3. 
+**Work by Hand:** Show 2 or 3 manual math examples of how your custom tool calculates its numbers so anyone can verify the logic.
 
-    Args:
-        prompt: Message shown to the user when asking for input.
-        min_value: If set, the integer must be greater than or equal to this value.
-        max_value: If set, the integer must be less than or equal to this value.
-        retries: If set, stop after this many invalid attempts by raising ValueError.
-                 If None, the function keeps prompting indefinitely.
 
-    Returns:
-        The validated integer entered by the user.
+4. 
+**Write Pseudocode:** Sketch out your program's logic using basic, plain-English steps before you write actual Python code.
 
-    Raises:
-        ValueError: If `min_value` > `max_value`, or if the number of invalid
-                    attempts exceeds `retries` (when `retries` is provided).
 
-    Examples:
-        >>> # Basic usage
-        >>> n = get_valid_integer("Pick a number: ")
-        >>> # With a range and at most 3 attempts
-        >>> age = get_valid_integer("Age? ", min_value=0, max_value=120, retries=3)
-    """
-    # Validate that the specified range (if any) makes logical sense.
-    if min_value is not None and max_value is not None and min_value > max_value:
-        raise ValueError("min_value cannot be greater than max_value.")
+5. 
+**Convert to Python:** This is where you write the actual code using the `hands-on-ai` starter code template.
 
-    attempts = 0  # Count how many invalid inputs the user has provided
 
-    while True:
-        # Read raw text from the terminal.
-        raw = input(prompt)
-
-        try:
-            # Try to parse the input as an integer (e.g., "42" -> 42).
-            value = int(raw)
-        except ValueError:
-            # Parsing failed: the user didn't enter a valid integer.
-            print("Invalid input. Please enter a whole number (e.g., -2, 0, 7).")
-            attempts += 1
-        else:
-            # If parsing succeeded, optionally enforce min/max constraints.
-            if (min_value is not None and value < min_value) or \
-               (max_value is not None and value > max_value):
-                # Build a friendly, precise constraint message.
-                lower = f"≥ {min_value}" if min_value is not None else None
-                upper = f"≤ {max_value}" if max_value is not None else None
-                if lower and upper:
-                    print(f"Please enter a number {lower} and {upper}.")
-                elif lower:
-                    print(f"Please enter a number {lower}.")
-                else:
-                    print(f"Please enter a number {upper}.")
-                attempts += 1
-            else:
-                # All checks passed: return the valid integer.
-                return value
+6. 
+**Test Your Data:** Create a dedicated testing section at the very end of your notebook using simple assertions to prove your code handles normal data and edge cases correctly.
 
-        # If a retry limit is set and we've reached it, stop with an error.
-        if retries is not None and attempts >= retries:
-            raise ValueError("Too many invalid attempts.")
 
-Show more lines
-What’s a docstring (quick cheat sheet)
-It’s the first string in a function/class/module ("""...""").
-Explains what the function does, its parameters, return value, errors, and sometimes examples.
-Accessible via help(get_valid_integer) or get_valid_integer.__doc__.
-Follows conventions like PEP 257; the style above uses a common, readable format.
-Minimal version (if you only need the basics)
 
+---
 
+## 3. What You Actually Need to Turn In
 
-Python
-def get_valid_integer(prompt: str = "Enter an integer: ") -> int:
-    """
-    Repeatedly prompt the user until a valid integer is entered, then return it.
+To secure full marks, you need to submit a **ZIP file** and a **GitHub repository link** containing three core files:
 
-    Args:
-        prompt: Message shown to the user when asking for input.
+### 📁 1. Your Colab Notebook (`smart_finance_assistant.ipynb`)
 
-    Returns:
-        The integer provided by the user.
-    """
-    while True:
-        s = input(prompt)
-        try:
-            return int(s)
-        except ValueError:
-            print("Invalid input. Please enter a valid integer.")
+This contains your working Gradio application, the code, your testing section, and your step-by-step markdown explanations.
 
-Show more lines
-If your lecturer prefers a specific docstring style (Google, NumPy, or reStructuredText for Sphinx), I can reformat the docstring accordingly. Do you want me to align it to a particular style guide or add unit tests as well?
+### 📁 2. A README.md File
 
+This is the front page of your GitHub repository. It should clearly explain what your assistant does, show sample inputs and outputs, and give clear instructions on how to run your notebook.
 
+### 📁 3. A Developer's Diary (`diary.md`)
 
+This is crucial—it accounts for a massive chunk of your **AI Collaboration** grade. You need to show your "Weekly AI Evidence Packages" from Weeks 8–12. For each week, include:
 
+* An **Artifact** (a screenshot or GIF of you prompting Gemini, ChatGPT, or Copilot).
 
 
+* The **Context** (a one-sentence goal of what you were trying to fix or build).
 
 
-You said:
+* A **Reflection** (what worked, what didn't, and what you learned from the AI's output).
 
-Wow... I am a beginner, that look confusing, I thoun you just add some comments or something.   Waht the -. int meant etc... we havent learned that
-Copilot said:
-Copilot
-Ah, got it! Let’s keep it super beginner-friendly—just comments and a simple docstring, no fancy stuff like Optional or *args. Here’s the cleaned-up version:
 
 
+> ⚠️ **Crucial Admin Steps:** > * Make sure your GitHub repository shows a consistent history of commits over the semester.
+> * Don't forget to add **`kevin-blasiak-curtin`** as a collaborator on GitHub so your work can be graded!
+> 
+> 
 
+---
 
-Python
-def get_valid_integer(prompt="Enter an integer: "):
-    """
-    Ask the user to enter an integer and keep asking until they do.
+## How Your Grade is Divided
 
-    Args:
-        prompt (str): The message shown to the user.
+Keep these weightings in mind to prioritize your time over the next couple of days:
 
-    Returns:
-        int: The valid integer entered by the user.
-    """
-    while True:
-        # Ask the user for input
-        user_input = input(prompt)
+* 
+**30% Functionality:** Does the chatbot, RAG, tool, and Gradio interface actually work?
 
-        try:
-            # Try to convert the input to an integer
-            value = int(user_input)
-            return value  # If successful, return the integer
-        except ValueError:
-            # If conversion fails, tell the user and ask again
-            print("Invalid input. Please enter a whole number.")
 
-Show more lines
-✅ What’s happening here:
-def get_valid_integer(...): → This defines the function.
-""" ... """ → This is the docstring (your lecturer’s “weird thing”). It explains what the function does.
-while True: → Keeps looping until the user gives a valid integer.
-int(user_input) → Converts the text to an integer. If it fails, Python raises a ValueError.
-except ValueError: → Catches that error and prints a friendly message.
-Would you like me to:
+* 
+**20% Testing & Debugging:** Do you have a clear testing section that checks for edge cases?
 
-Add comments explaining every single line (like a beginner tutorial)?
-Show an example of how to call this function in a real program?
-Or add a version that checks if the number is in a range (like 1–10)?
 
+* 
+**20% AI Collaboration:** Is your Developer's Diary complete with weekly screenshots and reflections?
 
 
+* 
+**15% Business Relevance:** Does your app solve a practical, real-world business/finance problem?
 
 
+* 
+**15% Clarity & Reflection:** Is your GitHub repo professional, organized, and easy to navigate?
 
 
-You said:
 
-Are there different docstring styles
-Copilot said:
-Copilot
-Yes! There are several common docstring styles, and which one you use often depends on your lecturer’s or project’s guidelines. Here are the main ones:
-
-✅ 1. PEP 257 / Simple Style (most common for beginners)
-Just a short description, maybe with Args and Returns:
-
-
-
-
-Python
-def add(a, b):
-    """
-    Add two numbers and return the result.
-
-    Args:
-        a (int): First number.
-        b (int): Second number.
-
-    Returns:
-        int: Sum of a and b.
-    """
-    return a + b
-✅ 2. Google Style
-Uses clear sections with indentation:
-
-
-
-
-Python
-def add(a, b):
-    """
-    Add two numbers.
-
-    Args:
-        a (int): First number.
-        b (int): Second number.
-
-    Returns:
-        int: The sum of the two numbers.
-    """
-    return a + b
-✅ 3. NumPy Style
-Popular in scientific code:
-
-
-
-
-Python
-def add(a, b):
-    """
-    Add two numbers.
-
-    Parameters
-    ----------
-    a : int
-        First number.
-    b : int
-        Second number.
-
-    Returns
-    -------
-    int
-        Sum of a and b.
-    """
-    return a + b
-
-Show more lines
-✅ 4. reStructuredText (Sphinx)
-Used for auto-generating docs:
-
-
-
-
-Python
-def add(a, b):
-    """
-    Add two numbers.
-
-    :param a: First number.
-    :type a: int
-    :param b: Second number.
-    :type b: int
-    :return: Sum of a and b.
-    :rtype: int
-    """
-    return a + b
-👉 For beginners, the Google style or the simple PEP 257 style is easiest and most accepted.
-
-Do you want me to rewrite your get_valid_integer function using the simplest style, or show all four styles for that function so you can pick one?
-
-
-
-
-
-
-
-
-
-Rewrite function with simplest docstring
-
-Show all four docstring styles
-
-Explain pros and cons of each style
-
-Message Copilot
-
-
-
-AI-generated content may be incorrect
-return ();
+Which of the suggested project themes (like *Budget Buddy* or *Savings Coach*) stands out to you the most, and have you already started setting up your Developer's Diary?
