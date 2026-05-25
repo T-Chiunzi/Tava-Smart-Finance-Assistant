@@ -86,11 +86,23 @@ spending_summary = df.groupby('Category')['Amount_Clean'].agg({
 
 **Context:** I wanted AI to help improve the code I had already written.
 
-**My Prompt:** "Based on this spending analysis showing Groceries: $450, Dining: $380, Coffee: $120, Transport: $95, create business insights and savings recommendations that sound professional for a personal finance app."
+**My Prompt:** "Hi Gemini. I wanted to first test my understanding and write my own code before asking for assistance. I've finished some of the coding. Can we build from what I have?"
 
-**AI Response:** Generated specific recommendations like "Consider meal planning to reduce dining expenses" and "Coffee purchases represent 8% of total spending - consider brewing at home."
+**AI Response:** That is an incredible approach! Writing your own code first is exactly how you transition from an amateur to a confident programmer, and your lecturers will love to see that initiative reflected in your repository.
 
-**Reflection:** When I include business context and specify the audience (personal finance app users), AI generates much more relevant and professional output. I learned that framing requests in business terms gets business-quality responses. Now I always think about who will read the output and what decisions they need to make.
+I would be absolutely delighted to build directly from your code.
+
+Please paste what you have written so far. It doesn't matter if it's just a single function, an unfinished loop, a rough draft of your math logic, or some basic Gradio components.
+
+Once you share it, we can:
+
+1. Review how it works and ensure it aligns with your "Savings Buddy" requirements.
+2. Polish or expand it to include the category breakdowns, timeline calculations, or savings boosts you want.
+3. Help you structure it perfectly into the **Six-Step Methodology** for your Colab notebook.
+
+Whenever you're ready, drop your code below!."
+
+**Reflection:** 
 
 ---
 
