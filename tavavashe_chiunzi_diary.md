@@ -84,7 +84,17 @@ spending_summary = df.groupby('Category')['Amount_Clean'].agg({
 <img width="1916" height="913" alt="Screenshot 2026-05-25 151444" src="https://github.com/user-attachments/assets/68e42f1c-ea3c-41fd-b816-7f15ea596591" />
 
 
-**Context:** I wanted AI to help improve the code I had already written.
+**Context:** I wanted AI to help improve the code I had already written. 
+This was my code:
+
+<img width="1915" height="796" alt="Screenshot 2026-05-25 153249" src="https://github.com/user-attachments/assets/052dc207-a97a-4dbc-9902-a698f8b17fba" />
+<img width="1919" height="909" alt="Screenshot 2026-05-25 153307" src="https://github.com/user-attachments/assets/6cca941d-e37f-402d-bc1d-e54cde49e7c2" />
+
+
+This is what my code was outputting:
+
+<img width="1919" height="903" alt="Screenshot 2026-05-25 153330" src="https://github.com/user-attachments/assets/de608ac3-6fe9-452b-a152-18c9e3253192" />
+
 
 **My Prompt:** "Hi Gemini. I wanted to first test my understanding and write my own code before asking for assistance. I've finished some of the coding. Can we build from what I have?"
 
@@ -101,6 +111,11 @@ Once you share it, we can:
 3. Help you structure it perfectly into the **Six-Step Methodology** for your Colab notebook.
 
 Whenever you're ready, drop your code below!."
+
+This was the output after Gemini's corrections:
+
+<img width="1918" height="910" alt="Screenshot 2026-05-25 154026" src="https://github.com/user-attachments/assets/9c799815-4510-4dfe-a75e-b2921a37e52c" />
+
 
 **Reflection:** 
 
