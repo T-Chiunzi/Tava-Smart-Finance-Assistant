@@ -233,3 +233,198 @@ At the bottom of your notebook, write explicit test cases using `assert` stateme
 ### What to do next:
 
 Would you like to start by drafting the **Pseudocode (Step 4)** for your calculation logic together, or would you prefer help writing the **System Prompt** to give your chatbot its unique, encouraging financial coach personality?
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Me: Hi Gemini. I wanted to first test my understanding and write my own code before asking for assistance. I've finished some of the coding. Can we build from what I have?
+
+Gemini: That is an incredible approach! Writing your own code first is exactly how you transition from an amateur to a confident programmer, and your lecturers will love to see that initiative reflected in your repository.
+
+I would be absolutely delighted to build directly from your code.
+
+Please paste what you have written so far. It doesn't matter if it's just a single function, an unfinished loop, a rough draft of your math logic, or some basic Gradio components.
+
+Once you share it, we can:
+
+1. Review how it works and ensure it aligns with your "Savings Buddy" requirements.
+2. Polish or expand it to include the category breakdowns, timeline calculations, or savings boosts you want.
+3. Help you structure it perfectly into the **Six-Step Methodology** for your Colab notebook.
+
+Whenever you're ready, drop your code below!
+
+Me: #Test code
+#General greetings
+print("Welcome to your savings app. Tell me about yourself.")
+Name = input("What is your name: ")
+Salary_str = input("What is your salary: ")
+try:
+    Salary = float(Salary_str) # Convert salary to a float for potential calculations
+except ValueError:
+    print("Invalid salary input. Please enter a numerical value.")
+    Salary = 0.0 # Default or handle error appropriately
+
+welcome_message = f"Hello {Name}, welcome to the system!"
+
+#Printing the results
+print("\n --- User Profile ---")
+print(welcome_message)
+print(f"Your recorded salary is: $ {Salary:,.2f}") # Format salary for better display
+
+#Ask about savings goals
+savings_goals_list = [] # Initialize a list to store savings goals
+while True: # Loop indefinitely until user enters '0'
+    print("\nWhat are your savings goals? Enter 0 to stop")
+    Savings_Goal = input("What is the name of your goal? ")
+    if Savings_Goal == '0':
+        break # Exit loop if user enters '0'
+
+    Percentage_str = input(f"How much of your salary do you want to dedicate to '{Savings_Goal}'? (%) ")
+    try:
+        Percentage = float(Percentage_str)
+        if not (0 <= Percentage <= 100):
+            print("Percentage must be between 0 and 100. Please try again.")
+            continue # Ask for input again if percentage is out of range
+        savings_goals_list.append({"goal": Savings_Goal, "percentage": Percentage})
+        print(f"Recorded '{Savings_Goal}', with {Percentage:.2f}% of your salary.")
+    except ValueError:
+        print("Invalid percentage input. Please enter a numerical value.")
+        continue # Ask for input again if percentage is not a number
+
+print("\n--- Your Savings Goals ---")
+if not savings_goals_list:
+    print("No savings goals recorded.")
+else:
+    for goal_item in savings_goals_list:
+        print(f"- {goal_item['goal']}: {goal_item['percentage']:.2f}% of salary")
+
+#Calculate the amount
+Save_Amount = Salary * (sum(goal['percentage'] for goal in savings_goals_list) / 100)
+print(f"\nYour total savings goal is: $ {Save_Amount:,.2f}")
+
+#Get expenses
+print("\n--- Expenses ---")
+while True:
+    Expenses = input("Please enter expense or 0 to stop: ")
+    if Expenses == '0':
+        break
+Expenses = input("Please enter expense: ")
+Amount = input("Please enter amount: ")
+try:
+    Amount = float(Amount)
+except ValueError:
+    print("Invalid amount input. Please enter a numerical value.")
+
+Gemini: This is an excellent foundation! You have successfully implemented core programming concepts like variables, data type conversion, user input validation using `try-except` blocks, `while` loops, and list manipulation. This demonstrates a strong grasp of Python fundamentals for a first-year student.
+
+Let's do a quick code review of what you have built, fix a couple of minor logical bugs in your expenses loop, and then look at how to evolve this terminal-based script into a custom Python function for your final Gradio dashboard app.
+
+---
+
+### Part 1: Quick Code Fixes for Your Expenses Loop
+
+Near the bottom of your code, your expenses loop has a logical trap:
+
+1. It enters a `while True:` loop but immediately exits if `Expenses == '0'`.
+2. If it doesn't exit, it doesn't actually save that expense anywhere.
+3. Outside the loop, it overrides the `Expenses` variable and asks for an `Amount`, but it only runs once instead of collecting multiple expenses.
+
+Here is how you can update that section to work exactly like your brilliant savings goal loop:
+
+```python
+# --- FIXED EXPENSES SECTION ---
+print("\n--- Expenses ---")
+expenses_list = []  # Initialize a list to store expenses
+
+while True:
+    expense_name = input("Please enter expense category (e.g., Groceries, Rent) or 0 to stop: ")
+    if expense_name == '0':
+        break
+        
+    amount_str = input(f"Please enter the amount spent on '{expense_name}': $")
+    try:
+        amount = float(amount_str)
+        # Store both the name and amount as a dictionary inside our list
+        expenses_list.append({"category": expense_name, "amount": amount})
+        print(f"Recorded ${amount:,.2f} under '{expense_name}'.")
+    except ValueError:
+        print("Invalid amount input. Please enter a numerical value.")
+        continue
+
+# Calculate the remaining balance
+total_expenses = sum(exp['amount'] for exp in expenses_list)
+remaining_salary = Salary - total_expenses
+
+print("\n--- Financial Breakdown ---")
+print(f"Total Expenses: $ {total_expenses:,.2f}")
+print(f"Salary Left: $ {remaining_salary:,.2f}")
+
+```
+
+---
+
+### Part 2: Moving Toward the Assignment Framework
+
+For your assignment, you cannot use the `input()` function or terminal `print()` statements in your final app. Why? Because **Gradio** is a web-based user interface. Web interfaces use visual boxes for typing and buttons for clicking.
+
+Your code needs to be wrapped inside a **modular Python function** (this satisfies the **Agent Tool** requirement). Instead of interactive inputs, the function accepts parameters, runs your logic, and *returns* the final text output.
+
+Here is a preview of how your logic transforms into a clean, reusable function that fits perfectly into the `hands-on-ai` framework and Gradio:
+
+```python
+def calculate_savings_buddy(salary, goal_name, goal_cost, expenses_dict, boost_percentage=0):
+    """
+    Your custom tool function. It takes numbers from the UI, 
+    performs calculations, and returns a summary message.
+    """
+    # 1. Handle the savings boost percentage if selected
+    # If a user wants to boost their savings by 10%, we increase their allocation target
+    boost_factor = 1 + (boost_percentage / 100)
+    
+    # 2. Calculate Total Expenses and percentages
+    total_expenses = sum(expenses_dict.values())
+    leftover_income = salary - total_expenses
+    
+    # 3. Generate a dynamic breakdown string
+    breakdown_report = "### Expense Breakdown:\n"
+    for category, amount in expenses_dict.items():
+        percentage_of_income = (amount / salary) * 100 if salary > 0 else 0
+        breakdown_report += f"- **{category}**: ${amount:,.2f} ({percentage_of_income:.1f}% of income)\n"
+    
+    # 4. Calculate Timeline for the specific item (e.g., TV)
+    # Let's say we advise saving 15% of their leftover income monthly, scaled by the boost
+    monthly_savings_target = (leftover_income * 0.15) * boost_factor
+    
+    if monthly_savings_target <= 0:
+        timeline_message = "⚠️ Based on your current expenses, you don't have enough remaining balance to save comfortably. Let's chat with the AI Coach to optimize your budget!"
+    else:
+        months_needed = goal_cost / monthly_savings_target
+        timeline_message = f"🎯 To buy your **{goal_name}** (${goal_cost:,.2f}), if you save ${monthly_savings_target:,.2f} a month, you will hit your goal in **{months_needed:.1f} months**!"
+        
+    # Combine everything into a nice output report
+    final_output = f"""
+## 📊 Your Savings Buddy Dashboard Report
+
+**Total Salary:** ${salary:,.2f}
+**Total Expenses:** ${total_expenses:,.2f}
+**Remaining Disposable Income:** ${leftover_income:,.2f}
+
+{breakdown_report}
+
+---
+### 📅 Your Timeline Plan
+{timeline_message}
+"""
+    return final_output
+
+```
+
+---
+
+### Step-by-Step Goal: What to Do Next
+
+Since you have cracked the math logic, let's turn this into an amazing submission piece by piece:
+
+1. **Step 3 (Work by Hand):** Take a piece of scrap paper (or open a blank document). Pick a sample salary (e.g., $4,000), a goal (e.g., $1,200 TV), and three basic expenses. Type out the manual arithmetic calculation to show how you find the percentages and months. Put this calculation into a Markdown cell in your notebook.
+2. **Setup the Gradio visual components:** We can start writing the script that creates text boxes for `Salary` and `Goal Cost`, a dropdown element for your `Boost Percentage` (10%, 15%, 20%), and maps them to your logic.
+
+Would you like to build the visual Gradio interface for these inputs next, or would you prefer to wire up the AI Chatbot's custom system prompt so you can chat with it?
