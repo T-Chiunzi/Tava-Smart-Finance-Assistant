@@ -70,7 +70,19 @@ spending_summary = df.groupby('Category')['Amount_Clean'].agg({
 ---
 
 ### Entry 3 – Improving the code
-**Artifact:** Screenshot of Gemini generating financial insights from data.
+
+
+<img width="1919" height="907" alt="Screenshot 2026-05-25 151142" src="https://github.com/user-attachments/assets/75493f92-f2b5-45c9-9b6a-855af7493dde" />
+<img width="1919" height="908" alt="Screenshot 2026-05-25 151203" src="https://github.com/user-attachments/assets/8833cb45-0384-41fa-a244-d27dd1f98f84" />
+<img width="1917" height="909" alt="Screenshot 2026-05-25 151220" src="https://github.com/user-attachments/assets/b1d4f1b2-8d32-4b0f-a77b-fa5b75fa1608" />
+<img width="1919" height="916" alt="Screenshot 2026-05-25 151242" src="https://github.com/user-attachments/assets/39bf4139-54e7-4122-bd3e-d2529e93cca7" />
+<img width="1919" height="908" alt="Screenshot 2026-05-25 151257" src="https://github.com/user-attachments/assets/491e4050-7139-4508-92a3-186147946996" />
+<img width="1916" height="910" alt="Screenshot 2026-05-25 151313" src="https://github.com/user-attachments/assets/d1ce8aff-34e8-42a4-b2d0-9f31640f54a2" />
+<img width="1916" height="903" alt="Screenshot 2026-05-25 151331" src="https://github.com/user-attachments/assets/c88e3e37-69dc-466f-8a6d-71a1753bdbf6" />
+<img width="1919" height="900" alt="Screenshot 2026-05-25 151347" src="https://github.com/user-attachments/assets/60bf6fa9-0b04-4c85-8734-1e905ab3edd4" />
+<img width="1919" height="903" alt="Screenshot 2026-05-25 151405" src="https://github.com/user-attachments/assets/b767398e-cf6a-431b-8516-eae0b25b1142" />
+<img width="1916" height="913" alt="Screenshot 2026-05-25 151444" src="https://github.com/user-attachments/assets/68e42f1c-ea3c-41fd-b816-7f15ea596591" />
+
 
 **Context:** I wanted AI to help improve the code I had already written.
 
