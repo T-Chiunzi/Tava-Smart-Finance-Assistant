@@ -11,7 +11,7 @@ This file shows sample entries for your **Developer's Diary**. You must document
 
 ## Foundation Skills Examples
 
-### Entry 1 (25/04/2026)– Starting Out
+### Entry 1 – Starting Out
 **Artifact:**
 
 <img width="1831" height="639" alt="Screenshot (63)" src="https://github.com/user-attachments/assets/4eec5a3c-5b82-4c95-a791-6e995d4c59d3" />
@@ -40,7 +40,7 @@ May you please give a basic skeleton template that breaks down the overall task 
 
 ---
 
-### Entry 2 – Critiquing and Improving AI Code
+### Entry 2 – Understanding the code
 **Artifact:** Before/after screenshots of AI-generated spending analysis code.
 
 **Context:** AI gave me complex code that was hard to understand for my transaction analysis.
@@ -69,10 +69,10 @@ spending_summary = df.groupby('Category')['Amount_Clean'].agg({
 
 ---
 
-### Entry 3 – Business Context in AI Interactions
+### Entry 3 – Improving the code
 **Artifact:** Screenshot of Gemini generating financial insights from data.
 
-**Context:** I wanted AI to help generate business recommendations from spending analysis.
+**Context:** I wanted AI to help improve the code I had already written.
 
 **My Prompt:** "Based on this spending analysis showing Groceries: $450, Dining: $380, Coffee: $120, Transport: $95, create business insights and savings recommendations that sound professional for a personal finance app."
 
