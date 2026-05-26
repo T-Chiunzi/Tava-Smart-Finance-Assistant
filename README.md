@@ -4,6 +4,32 @@
 [![curtin](https://img.shields.io/badge/-curtin-f57c00?style=flat-square)](https://github.com/topics/curtin) [![ai-assistant](https://img.shields.io/badge/-ai--assistant-blue?style=flat-square)](https://github.com/topics/ai-assistant) [![chatbot](https://img.shields.io/badge/-chatbot-blue?style=flat-square)](https://github.com/topics/chatbot) [![edtech](https://img.shields.io/badge/-edtech-4caf50?style=flat-square)](https://github.com/topics/edtech) [![finance](https://img.shields.io/badge/-finance-blue?style=flat-square)](https://github.com/topics/finance) [![financial-tools](https://img.shields.io/badge/-financial--tools-blue?style=flat-square)](https://github.com/topics/financial-tools) [![gradio](https://img.shields.io/badge/-gradio-blue?style=flat-square)](https://github.com/topics/gradio) [![jupyter-notebook](https://img.shields.io/badge/-jupyter--notebook-blue?style=flat-square)](https://github.com/topics/jupyter-notebook) [![python](https://img.shields.io/badge/-python-3776ab?style=flat-square)](https://github.com/topics/python) [![rag](https://img.shields.io/badge/-rag-blue?style=flat-square)](https://github.com/topics/rag)
 <!-- BADGES:END -->
 
+---
+
+This repository contains the following files:
+
+1. AI-CONVERSATIONS
+2. LICENSE
+3. README
+4. Savings_Assistant_Tester
+5. sample_transactions
+6. smart_finance_project
+7. starter_notebook
+8. tavavasche_chiunzi_diary
+
+Please note the order to review these files is:
+
+1. AI-CONVERSATIONS
+2. LICENSE
+3. README
+4. smart_finance_project
+5. sample_transactions
+6. tavavashe_chiunzi_diary
+7. Savings_Assistant_Tester 
+8. starter_notebook
+
+
+---
 Welcome to your project repository for the **ISYS2001 Final Programming Project**. This repo provides a starting point for building your **Smart Finance Assistant**.
 
 ---
