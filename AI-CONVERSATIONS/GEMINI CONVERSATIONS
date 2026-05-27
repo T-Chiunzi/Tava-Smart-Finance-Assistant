@@ -119,7 +119,7 @@ Since you're using Colab, remember that you’ll need to upload your CSV file to
 
 Would you like to dive deeper into how to set up the API portion or the CSV summarizer first?
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Me: Hello Gemini, I am a 1st-year, 2nd-semester B.Com Business Information Systems undergraduate student. I need help with my Introduction to Business Programming assignment, as it involves AI collaboration (the coding language we are using is Python, and I am an amateur in this language). Please break down what I need to do for this assignment in a simple, easy-to-understand way.
 
@@ -257,7 +257,7 @@ Keep these weightings in mind to prioritize your time over the next couple of da
 
 Which of the suggested project themes (like *Budget Buddy* or *Savings Coach*) stands out to you the most, and have you already started setting up your Developer's Diary?
 
-________________________________________________________________________________________________________-
+
 
 Me: Thank you Gemini, I’ve chosen to create a savings buddy app for this assignment. Here is what I want the buddy to be capable of. 
 I want to design a savings buddy app that tracks and monitors expenses and sorts them into different categories such as groceries, rent, utilities, eating out, subscriptions, leisure and entertainment, once the user inputs them in. 
@@ -357,7 +357,7 @@ At the bottom of your notebook, write explicit test cases using `assert` stateme
 
 Would you like to start by drafting the **Pseudocode (Step 4)** for your calculation logic together, or would you prefer help writing the **System Prompt** to give your chatbot its unique, encouraging financial coach personality?
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Me: Hi Gemini. I wanted to first test my understanding and write my own code before asking for assistance. I've finished some of the coding. Can we build from what I have?
 
@@ -552,7 +552,7 @@ Since you have cracked the math logic, let's turn this into an amazing submissio
 
 Would you like to build the visual Gradio interface for these inputs next, or would you prefer to wire up the AI Chatbot's custom system prompt so you can chat with it?
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Me: Thank you, Gemini. I want to rework my original savings app idea I have uploaded a Word doc for you to read through about what I want this savings app to achieve (I still also want it to have cute three themes, light mode, dark mode, and sepia).
 Gemini: This is a fantastic direction! Pivoting from a budget tracker to a dedicated Savings Buddy app is a wonderful way to learn how to adapt your Systems Analysis and Design framework to a brand-new set of user requirements.
