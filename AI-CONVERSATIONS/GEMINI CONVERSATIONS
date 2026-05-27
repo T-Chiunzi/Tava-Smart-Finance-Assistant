@@ -1236,6 +1236,9 @@ app.launch(debug=True)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 This standalone design keeps your custom savings app entirely on its own while updating it to meet the strict architecture requirements from your course slides: it sets up a native document vector RAG index via create_index and encapsulates your calculations as a dedicated, registered Agent Tool via create_agent.
 🛠️ Standalone "Savings Buddy" Implementation Code
 Python
